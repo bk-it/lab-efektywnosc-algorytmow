@@ -89,7 +89,8 @@ namespace lab_efektywnosc_algorytmow
             Console.WriteLine("QuickSort: t = " + timeQSavg.TotalMilliseconds.ToString() + " +/- " + arrDeviation(timeQS).ToString());
             
             Console.WriteLine("ArraySort: t = " + timeASavg.TotalMilliseconds.ToString() + " +/- " + arrDeviation(timeAS).ToString());
-            
+
+            Console.WriteLine();
         }
 
         private double arrDeviation(TimeSpan[] t)
