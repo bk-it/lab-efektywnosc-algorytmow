@@ -7,12 +7,16 @@ namespace lab_efektywnosc_algorytmow
     {
         static void Main(string[] args)
         {
+            var gr = new Generators();
+            SortingAlgorithms.InsertionSort ob = new InsertionSort();
+            SortingAlgorithms.MergeSort om = new MergeSort();
+            SortingAlgorithms.QuickSort oq = new QuickSort();
+            SortingAlgorithms.ArraySort asq = new ArraySort();
 
             Console.WriteLine();
             Console.WriteLine("IS");
             //INSERTION SORT
-            int[] arr = { 12, 11, 13, 5, 6 };
-            SortingAlgorithms.InsertionSort ob = new InsertionSort();
+            int[] arr = gr.GenerateRandom(20, 1, 30);
             ob.sort(arr);
             ob.printArray(arr);
 
@@ -20,8 +24,7 @@ namespace lab_efektywnosc_algorytmow
             Console.WriteLine();
             Console.WriteLine("MS");
             // MERGE SORT
-            int[] arr2 = { 12, 11, 13, 5, 6, 7 };
-            SortingAlgorithms.MergeSort om = new MergeSort();
+            int[] arr2 = gr.GenerateRandom(20, 1, 30);
             om.sort(arr2, 0, arr2.Length - 1);
             om.printArray(arr2);
 
@@ -29,8 +32,7 @@ namespace lab_efektywnosc_algorytmow
             Console.WriteLine();
             Console.WriteLine("QS");
             //QUICKSORT
-            int[] arr3 = { 10, 7, 8, 9, 1, 5 };
-            SortingAlgorithms.QuickSort oq = new QuickSort();
+            int[] arr3 = gr.GenerateRandom(20, 1, 30);
             int n = arr3.Length;
             oq.quickSort(arr3, 0, n - 1);
             oq.printArray(arr3, n);
@@ -39,10 +41,20 @@ namespace lab_efektywnosc_algorytmow
             Console.WriteLine();
             Console.WriteLine("AS");
             //ARRAYSORT
-            int[] intArray = new int[5] { 8, 10, 2, 6, 3 };
-            SortingAlgorithms.ArraySort asq = new ArraySort();
+            int[] intArray = gr.GenerateRandom(20, 1, 30);
             asq.sort(intArray);
             asq.printArray(intArray);
+
+
+            Console.WriteLine();
+            Console.WriteLine("RANDOM");
+            //RANDOM
+            
+            var arrgiv = gr.GenerateReversed(50, 1, 30);
+            foreach(int i in arrgiv)
+            {
+                Console.Write(i + " ");
+            }
 
         }
     }
