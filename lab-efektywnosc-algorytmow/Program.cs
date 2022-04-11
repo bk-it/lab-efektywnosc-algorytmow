@@ -9,7 +9,7 @@ namespace lab_efektywnosc_algorytmow
     {
         static void Main(string[] args)
         {
-            var main = new Main();
+            var main = new Master();
             main.getAttempt(1, 10, 0, 100);
 
         }

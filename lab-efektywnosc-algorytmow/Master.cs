@@ -7,8 +7,9 @@ using static lab_efektywnosc_algorytmow.SortingAlgorithms;
 
 namespace lab_efektywnosc_algorytmow
 {
-    internal class Main
+    internal class Master
     {
+        Stopwatch stopWatch = new Stopwatch();
         Generators generator = new Generators();
         SortingAlgorithms.InsertionSort IS = new InsertionSort();
         SortingAlgorithms.MergeSort MS = new MergeSort();
@@ -23,6 +24,11 @@ namespace lab_efektywnosc_algorytmow
             TimeSpan[] timeMS = new TimeSpan[10];
             TimeSpan[] timeQS = new TimeSpan[10];
             TimeSpan[] timeAS = new TimeSpan[10];
+
+            TimeSpan timeISavg = new TimeSpan();
+            TimeSpan timeQSavg = new TimeSpan();
+            TimeSpan timeMSavg = new TimeSpan();
+            TimeSpan timeASavg = new TimeSpan();
 
             switch (type)
             {
@@ -42,14 +48,6 @@ namespace lab_efektywnosc_algorytmow
                     a = generator.GenerateFewUnique(size);
                     break;
             }
-
-            Stopwatch stopWatch = new Stopwatch();
-
-            TimeSpan timeISavg = new TimeSpan();
-            TimeSpan timeQSavg = new TimeSpan(); ;
-            TimeSpan timeMSavg = new TimeSpan(); ;
-            TimeSpan timeASavg = new TimeSpan(); ;
-            
 
             for (int f = 0; f < 4; f++)
             {
@@ -84,43 +82,14 @@ namespace lab_efektywnosc_algorytmow
             timeASavg = timeASavg / 10;
 
 
-            Console.WriteLine("InsertionSort:");
-            foreach(TimeSpan t in timeIS)
-            {
-                Console.WriteLine(t.ToString());
-            }
-            Console.WriteLine("AVG:" + timeISavg.TotalMilliseconds.ToString());
-            Console.WriteLine("DEV:" + arrDeviation(timeIS).ToString());
-
-
-            Console.WriteLine("");
-            Console.WriteLine("MergeSort:");
-            foreach (TimeSpan t in timeMS)
-            {
-                Console.WriteLine(t.ToString());
-            }
-            Console.WriteLine("AVG:" + timeMSavg.TotalMilliseconds.ToString());
-            Console.WriteLine("DEV:" + arrDeviation(timeMS).ToString());
-
-
-            Console.WriteLine("");
-            Console.WriteLine("QuickSort:");
-            foreach (TimeSpan t in timeQS)
-            {
-                Console.WriteLine(t.ToString());
-            }
-            Console.WriteLine("AVG:" + timeQSavg.TotalMilliseconds.ToString());
-            Console.WriteLine("DEV:" + arrDeviation(timeQS).ToString());
-
-
-            Console.WriteLine("");
-            Console.WriteLine("ArraySort:");
-            foreach (TimeSpan t in timeAS)
-            {
-                Console.WriteLine(t.ToString());
-            }
-            Console.WriteLine("AVG:" + timeASavg.TotalMilliseconds.ToString());
-            Console.WriteLine("DEV:" + arrDeviation(timeAS).ToString());
+            Console.WriteLine("InsertionSort: t = " + timeISavg.TotalMilliseconds.ToString() + " +/- " + arrDeviation(timeIS).ToString());
+            
+            Console.WriteLine("MergeSort: t = " + timeMSavg.TotalMilliseconds.ToString() + " +/- " + arrDeviation(timeMS).ToString());
+            
+            Console.WriteLine("QuickSort: t = " + timeQSavg.TotalMilliseconds.ToString() + " +/- " + arrDeviation(timeQS).ToString());
+            
+            Console.WriteLine("ArraySort: t = " + timeASavg.TotalMilliseconds.ToString() + " +/- " + arrDeviation(timeAS).ToString());
+            
         }
 
         private double arrDeviation(TimeSpan[] t)
@@ -138,7 +107,8 @@ namespace lab_efektywnosc_algorytmow
                 sumOfDerivation += (value) * (value);
             }
             double sumOfDerivationAverage = sumOfDerivation / (intList.Count - 1);
-            return Math.Sqrt(sumOfDerivationAverage - (average * average));
+            double deviation = Math.Sqrt(sumOfDerivationAverage - (average * average));
+            return Math.Round(deviation, 6);
         }
     }
 }
