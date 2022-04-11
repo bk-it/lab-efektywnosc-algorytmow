@@ -141,14 +141,14 @@ namespace lab_efektywnosc_algorytmow
                 return (i + 1);
             }
 
-            public void quickSort(int[] arr, int low, int high)
+            public void sort(int[] arr, int low, int high)
             {
                 if (low < high)
                 {
                     int pi = partition(arr, low, high);
 
-                    quickSort(arr, low, pi - 1);
-                    quickSort(arr, pi + 1, high);
+                    sort(arr, low, pi - 1);
+                    sort(arr, pi + 1, high);
                 }
             }
 
