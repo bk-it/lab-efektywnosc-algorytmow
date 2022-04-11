@@ -7,19 +7,22 @@ namespace lab_efektywnosc_algorytmow
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine();
+            Console.WriteLine("IS");
             //INSERTION SORT
             int[] arr = { 12, 11, 13, 5, 6 };
             SortingAlgorithms.InsertionSort ob = new InsertionSort();
             ob.sort(arr);
             ob.printArray(arr);
 
+
+            Console.WriteLine();
+            Console.WriteLine("MS");
             // MERGE SORT
             int[] arr2 = { 12, 11, 13, 5, 6, 7 };
             SortingAlgorithms.MergeSort om = new MergeSort();
-            Console.WriteLine("Given Array");
-            om.printArray(arr2);
             om.sort(arr2, 0, arr2.Length - 1);
-            Console.WriteLine("\nSorted array");
             om.printArray(arr2);
 
 
@@ -30,8 +33,16 @@ namespace lab_efektywnosc_algorytmow
             SortingAlgorithms.QuickSort oq = new QuickSort();
             int n = arr3.Length;
             oq.quickSort(arr3, 0, n - 1);
-            Console.Write("Sorted array: \n");
             oq.printArray(arr3, n);
+
+
+            Console.WriteLine();
+            Console.WriteLine("AS");
+            //ARRAYSORT
+            int[] intArray = new int[5] { 8, 10, 2, 6, 3 };
+            SortingAlgorithms.ArraySort asq = new ArraySort();
+            asq.sort(intArray);
+            asq.printArray(intArray);
 
         }
     }

@@ -162,14 +162,23 @@ namespace lab_efektywnosc_algorytmow
                 }
                 Console.Write("\n");
             }
+        }
 
+        //ARRAY SORT
+        public class ArraySort
+        {
+            public void sort(int[] arr)
+            {
+                Array.Sort(arr);
+            }
 
-
-
-
-
-
-
+            public void printArray(int[] arr)
+            {
+                foreach (int i in arr)
+                {
+                    Console.Write(i + " ");
+                }
+            }
         }
 
     }
