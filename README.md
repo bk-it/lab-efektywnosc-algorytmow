@@ -1,4 +1,4 @@
-# Kursy walut z NBP
+# Efektywność algorytmów - eksperyment
 
 ## Podstawowe informacje
 
